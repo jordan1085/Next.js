@@ -1,13 +1,20 @@
 import React, { Fragment } from 'react';
+import { css } from '@emotion/react';
 import Layout from '../components/layouts/Layout';
+import { Formulario, Campo, InputSubmit } from '../components/ui/Formulario';
 
 export default function CrearCuenta() {
   return (
     <Fragment>
       <Layout>
-        <h1>Crear Cuenta</h1>
-        <form>
-          <div>
+        <h1
+          css={css`
+            text-align: center;
+            margin-top: 5rem;
+          `}
+        >Crear Cuenta</h1>
+        <Formulario>
+          <Campo>
             <labe htmlFor="nombre">Nombre</labe>
             <input 
               type="text"
@@ -15,8 +22,8 @@ export default function CrearCuenta() {
               placeholder="Tu Nombre"
               name="nombre"
             />
-          </div>
-          <div>
+          </Campo>
+          <Campo>
             <labe htmlFor="email">Email</labe>
             <input 
               type="email"
@@ -24,8 +31,8 @@ export default function CrearCuenta() {
               placeholder="Tu Email"
               name="email"
             />
-          </div>
-          <div>
+          </Campo>
+          <Campo>
             <labe htmlFor="password">Password</labe>
             <input 
               type="password"
@@ -33,12 +40,12 @@ export default function CrearCuenta() {
               placeholder="Tu Password"
               name="password"
             />
-          </div>
-          <input 
+          </Campo>
+          <InputSubmit 
             type="submit"
             value="Crear Cuenta"
           />
-        </form>
+        </Formulario>
       </Layout>
     </Fragment>
   )
