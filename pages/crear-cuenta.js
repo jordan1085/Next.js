@@ -3,7 +3,30 @@ import { css } from '@emotion/react';
 import Layout from '../components/layouts/Layout';
 import { Formulario, Campo, InputSubmit } from '../components/ui/Formulario';
 
+// Validacion
+import useValidacion from '../hooks/useValidacion';
+import validarCrearCuenta from '../validacion/validarCrearCuenta';
+
+const STATE_INICIAL = {
+  nombre: '',
+  email: '',
+  password: ''
+}
+
 export default function CrearCuenta() {
+
+  const {
+    valores,
+    errorres,
+    submitForm,
+    handleChange,
+    handleSubmit
+  } = useValidacion(STATE_INICIAL, validarCrearCuenta, crearCuenta);
+
+  function crearCuenta() {
+    console.log('Creando cuenta...');
+  }
+
   return (
     <Fragment>
       <Layout>
