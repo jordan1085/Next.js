@@ -1,12 +1,14 @@
 import { Fragment } from 'react';
 import Layout from '../components/layouts/Layout';
 
-export default function Home() {
+const Nosotros = () => {
   return (
     <Fragment>
       <Layout>
-        <h1>Inicio</h1>
+        <h1>Nosotros</h1>
       </Layout>
     </Fragment>
   )
 }
+
+export default Nosotros
