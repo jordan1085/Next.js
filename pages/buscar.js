@@ -1,14 +1,12 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Layout from '../components/layouts/Layout';
 
-const Nosotros = () => {
+export default function Buscar() {
   return (
     <Fragment>
       <Layout>
-        <h1>Nosotros</h1>
+        <h1>Buscar</h1>
       </Layout>
     </Fragment>
   )
 }
-
-export default Nosotros
