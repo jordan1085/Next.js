@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { css } from '@emotion/react';
 import Layout from '../components/layouts/Layout';
-import { Formulario, Campo, InputSubmit } from '../components/ui/Formulario';
+import { Formulario, Campo, InputSubmit, Error } from '../components/ui/Formulario';
 
 // Validacion
 import useValidacion from '../hooks/useValidacion';
@@ -17,10 +17,10 @@ export default function CrearCuenta() {
 
   const {
     valores,
-    errorres,
-    submitForm,
+    errores,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    handleBlur
   } = useValidacion(STATE_INICIAL, validarCrearCuenta, crearCuenta);
 
   const {nombre, email, password} = valores;
@@ -51,8 +51,12 @@ export default function CrearCuenta() {
               name="nombre"
               value= {nombre}
               onChange={handleChange}
+              onBlur={handleBlur}
             />
           </Campo>
+          
+          {errores.nombre && <Error>{errores.nombre}</Error>}
+
           <Campo>
             <labe htmlFor="email">Email</labe>
             <input 
@@ -62,8 +66,12 @@ export default function CrearCuenta() {
               name="email"
               value= {email}
               onChange={handleChange}
+              onBlur={handleBlur}
             />
           </Campo>
+
+          {errores.email && <Error>{errores.email}</Error>}
+
           <Campo>
             <labe htmlFor="password">Password</labe>
             <input 
@@ -73,8 +81,12 @@ export default function CrearCuenta() {
               name="password"
               value= {password}
               onChange={handleChange}
+              onBlur={handleBlur}
             />
           </Campo>
+
+          {errores.password && <Error>{errores.password}</Error>}
+
           <InputSubmit 
             type="submit"
             value="Crear Cuenta"
