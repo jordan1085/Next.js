@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-
 const useValidacion = (stateInicial, validar, fn) => {
 
-    const [valores, guardarValores] = useState(stateInicial);
-    const [errores, guardarErrores] = useState({});
-    const [submitForm, guardarSubmitForm] = useState(false);
+    const [valores, guardarValores ] = useState(stateInicial);
+    const [errores, guardarErrores ] = useState({});
+    const [ submitForm, guardarSubmitForm ] = useState(false);
 
     useEffect(() => {
         if(submitForm) {
             const noErrores = Object.keys(errores).length === 0;
 
             if(noErrores) {
-                fn(); // Funcion que se ejecuta en el componente
+                fn(); // Fn = Función que se ejecuta en el componente
             }
             guardarSubmitForm(false);
         }
-    }, [])
+    }, [errores]);
 
-    // Funcion que se ejecuta conforme el usuario escribe algo
+    // Función que se ejecuta conforme el usuario escribe algo
     const handleChange = e => {
         guardarValores({
             ...valores,
@@ -26,7 +25,7 @@ const useValidacion = (stateInicial, validar, fn) => {
         })
     }
 
-    // Funcion que se ejecuta cuando el usuario hace submit
+    // Función que se ejecuta cuando el usuario hace submit
     const handleSubmit = e => {
         e.preventDefault();
         const erroresValidacion = validar(valores);
@@ -34,19 +33,20 @@ const useValidacion = (stateInicial, validar, fn) => {
         guardarSubmitForm(true);
     }
 
-    // Blur
+
+    // cuando se realiza el evento de blur
     const handleBlur = () => {
         const erroresValidacion = validar(valores);
         guardarErrores(erroresValidacion);
     }
 
     return {
-        valores,
-        errores,
-        handleChange,
+        valores, 
+        errores, 
         handleSubmit,
+        handleChange,
         handleBlur
-    };
+    }
 }
  
 export default useValidacion;
