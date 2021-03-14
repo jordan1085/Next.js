@@ -14,7 +14,7 @@ import validarCrearProducto from '../validacion/validarCrearProducto';
 const STATE_INICIAL = {
   nombre: '',
   empresa: '',
-  // imagen: '',
+  imagen: '',
   url: '',
   descripcion: ''
 }
@@ -62,8 +62,7 @@ export default function NuevoProducto() {
 
     return router.push('/');
   }
-
-
+  
   const handleUploadStart = () => {
     guardarProgreso(0);
     guardarSubiendo(true);
